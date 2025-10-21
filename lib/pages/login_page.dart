@@ -60,7 +60,7 @@ class _SignupPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(backgroundColor: Colors.transparent),
+
       backgroundColor: Color(0xFFF5EFEB),
       body: Center(
         child: Column(
@@ -101,10 +101,7 @@ class _SignupPageState extends State<LoginPage> {
                           labelStyle: const TextStyle(color: Colors.black87),
                           border: OutlineInputBorder(),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors
-                                  .black54, 
-                            ),
+                            borderSide: BorderSide(color: Colors.black54),
                           ),
                         ),
                         validator: (value) {
@@ -124,15 +121,10 @@ class _SignupPageState extends State<LoginPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: const TextStyle(
-                            color: Colors.black87, 
-                          ),
+                          labelStyle: const TextStyle(color: Colors.black87),
                           border: OutlineInputBorder(),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors
-                                  .black54, 
-                            ),
+                            borderSide: BorderSide(color: Colors.black54),
                           ),
                         ),
                         validator: (value) {

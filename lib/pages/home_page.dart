@@ -1,9 +1,10 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:study_mate/widgets/chatbot/ui.dart';
 import 'package:study_mate/widgets/grid_widgets.dart';
 import 'package:study_mate/widgets/sidebar.dart';
-import 'package:study_mate/widgets/todo_widget.dart';
+import 'package:study_mate/widgets/slideritems_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -35,12 +36,31 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.circle_outlined, color: Colors.black),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Ui();
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            TodoWidget(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SlideritemsWidget(),
+            ),
+
             const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -48,40 +68,40 @@ class _HomePageState extends State<HomePage> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 180,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
+                  maxCrossAxisExtent: 190,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                 ),
                 children: [
                   GridWidgets(
                     title: 'Books',
                     icon: Icons.menu_book,
-                    color: Colors.deepPurple,
+                    color: Color(0xFFB5EAEA),
                   ),
                   GridWidgets(
                     title: 'Scanned Notes',
                     icon: Icons.note_alt,
-                    color: Colors.teal,
+                    color: Color(0xFFFFBCBC),
                   ),
                   GridWidgets(
                     title: 'Screenshots/Images',
                     icon: Icons.image,
-                    color: Colors.orange,
+                    color: Color(0xFFFFE59D),
                   ),
                   GridWidgets(
-                    title: 'Typed Notes',
+                    title: 'Ideas',
                     icon: Icons.keyboard,
-                    color: Colors.blue,
+                    color: Color(0xFFC3FBD8),
                   ),
                   GridWidgets(
                     title: 'Reference Links',
                     icon: Icons.link,
-                    color: Colors.green,
+                    color: Color(0xFFD7BCE8),
                   ),
                   GridWidgets(
                     title: 'Other Documents',
                     icon: Icons.folder,
-                    color: Colors.redAccent,
+                    color: Color(0xFFB5C6E0),
                   ),
                 ],
               ),
@@ -97,18 +117,22 @@ class _HomePageState extends State<HomePage> {
         bottomBarItems: [
           BottomBarItem(
             inActiveItem: Icon(Icons.home_filled, color: Colors.black),
-            activeItem: Icon(Icons.home_filled, color: Colors.blueAccent),
+            activeItem: Icon(Icons.home_filled, color: Colors.black),
           ),
           BottomBarItem(
-            inActiveItem: Icon(Icons.person_sharp, color: Colors.black),
-            activeItem: Icon(Icons.person_sharp, color: Colors.blueAccent),
+            inActiveItem: Icon(Icons.person, color: Colors.black),
+            activeItem: Icon(Icons.person, color: Colors.black),
           ),
           BottomBarItem(
             inActiveItem: Icon(Icons.bar_chart, color: Colors.black),
-            activeItem: Icon(Icons.bar_chart, color: Colors.blueAccent),
+
+            activeItem: Icon(Icons.bar_chart, color: Colors.black),
           ),
         ],
-        onTap: (int value) {},
+        onTap: (int value) {
+          controller.index = value;
+          setState(() {});
+        },
         kIconSize: 10,
         kBottomRadius: 50,
       ),

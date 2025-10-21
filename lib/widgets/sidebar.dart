@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:study_mate/pages/login_page.dart';
 
-import 'package:study_mate/pages/signup_page.dart';
+
 
 class Sidebar extends StatefulWidget {
   const Sidebar({super.key});
@@ -23,6 +25,15 @@ class _SidebarState extends State<Sidebar> {
     setState(() {
       username = prefs.getString('username') ?? 'Username';
     });
+
+  }
+  Future<void> logout() async {
+    await FirebaseAuth.instance.signOut();
+    if (mounted) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
+    }
   }
 
   @override
@@ -65,9 +76,7 @@ class _SidebarState extends State<Sidebar> {
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Logout'),
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => SignupPage()),
-              );
+             logout();
             },
           ),
         ],

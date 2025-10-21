@@ -15,8 +15,8 @@ class GridWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
-      width: 30,
+      height: 20,
+      width: 20,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(30),
