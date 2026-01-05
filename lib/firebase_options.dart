@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -64,6 +55,35 @@ class DefaultFirebaseOptions {
     projectId: 'studymate-acbf8',
     storageBucket: 'studymate-acbf8.firebasestorage.app',
     iosBundleId: 'com.example.studyMate',
+  );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDiEj8vjSsJT9R4oAWceMfsx4RiWso8qTo',
+    appId: '1:887653938327:web:00f080d53bd2b0753f65d2',
+    messagingSenderId: '887653938327',
+    projectId: 'studymate-acbf8',
+    authDomain: 'studymate-acbf8.firebaseapp.com',
+    storageBucket: 'studymate-acbf8.firebasestorage.app',
+    measurementId: 'G-1ZC59P816F',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDo0MqCfoyTV7N2B9h-ugQ99Kh4xL6Yfps',
+    appId: '1:887653938327:ios:02311869c3983b7c3f65d2',
+    messagingSenderId: '887653938327',
+    projectId: 'studymate-acbf8',
+    storageBucket: 'studymate-acbf8.firebasestorage.app',
+    iosBundleId: 'com.example.studyMate',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDiEj8vjSsJT9R4oAWceMfsx4RiWso8qTo',
+    appId: '1:887653938327:web:bf808f7d5286520b3f65d2',
+    messagingSenderId: '887653938327',
+    projectId: 'studymate-acbf8',
+    authDomain: 'studymate-acbf8.firebaseapp.com',
+    storageBucket: 'studymate-acbf8.firebasestorage.app',
+    measurementId: 'G-83XB0JYSH4',
   );
 
 }
